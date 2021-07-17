@@ -1,0 +1,12 @@
+.rows {
+    margin: 0 135px;
+}
+
+.columns {
+    border: 1px solid black;
+    width: 60px;
+    height: 60px;
+    padding: 0 0;
+    display: inline-block;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
