@@ -8,11 +8,11 @@ const Timer = (props) => {
     React.useEffect(() => {
         let interval = null;
 
-        if (props.timerOn) {
+        if (props.timerOn > 0) {
             interval = setInterval(() => {
                 props.setRandomRow(Math.floor(Math.random() * props.size));
                 props.setRandomCol(Math.floor(Math.random() * props.size));
-                props.setTime((prevTime) => prevTime + tenMilliseconds);
+                props.setTime((prevTime) => prevTime - tenMilliseconds);
             }, 1000);
         } else if (!props.timerOn) {
             clearInterval(interval);

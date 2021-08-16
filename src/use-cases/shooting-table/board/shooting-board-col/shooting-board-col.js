@@ -1,32 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 
 const ShootingBoardCol = ({
-                              timerOn,
-                              row,
-                              col,
-                              randomRow,
-                              randomCol,
-                              increaseScore,
-                              increaseMissed
-                          }) => {
+  timerOn,
+  row,
+  col,
+  randomRow,
+  randomCol,
+  addToCheckScore
+}) => {
 
-    const backgroundColor = timerOn && row === randomRow && col === randomCol
-        ? 'red' : 'white';
+  let backgroundColor = timerOn && row === randomRow && col === randomCol
+      ? 'red' : 'white';
+  let cursor = backgroundColor === 'red' ? 'pointer' : '';
 
-    return (
-        <div className="columns"
-             style={{backgroundColor: backgroundColor}}
-             onClick={() => {
-                 if (backgroundColor === 'red') {
-                     increaseScore()
-                 }
-                 else  {
-                     increaseMissed()
-                 }
-             }}
-        >
-        </div>
-    )
+  return (
+      <div className="columns"
+           style={{
+             backgroundColor: backgroundColor,
+             cursor: cursor
+           }}
+           onClick={() => {
+             if (backgroundColor === 'red') {
+               addToCheckScore(1);
+             } else {
+               addToCheckScore(0);
+             }
+           }}
+      >
+      </div>
+  )
 }
 
 export default ShootingBoardCol;

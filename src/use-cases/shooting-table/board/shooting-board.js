@@ -3,38 +3,36 @@ import React from "react";
 import ShootingBoardCol from "./shooting-board-col/shooting-board-col";
 
 const ShootingBoard = ({
-                           timerOn,
-                           size,
-                           randomRow,
-                           randomCol,
-                           increaseScore,
-                           increaseMissed
-                       }) => {
-    const mockArray = Array.from(Array(size).keys());
+  timerOn,
+  size,
+  randomRow,
+  randomCol,
+  addToCheckScore
+}) => {
+  const mockArray = Array.from(Array(size).keys());
 
-    return (
-        <div className="shooting-board">
-            {mockArray.map(row => {
-                return (
-                    <div className="rows" key={row}>
-                        {mockArray.map(col => {
-                            return (
-                                <ShootingBoardCol
-                                    key={`${row}:${col}`}
-                                    randomRow={randomRow}
-                                    randomCol={randomCol}
-                                    row={row}
-                                    col={col}
-                                    timerOn={timerOn}
-                                    increaseScore={increaseScore}
-                                    increaseMissed={increaseMissed}
-                                />
-                            )
-                        })}
-                    </div>
-                )
-            })}
-        </div>
-    )
+  return (
+      <div className="shooting-board">
+        {mockArray.map(row => {
+          return (
+              <div className="rows" key={row}>
+                {mockArray.map(col => {
+                  return (
+                      <ShootingBoardCol
+                          key={`${row}:${col}`}
+                          randomRow={randomRow}
+                          randomCol={randomCol}
+                          row={row}
+                          col={col}
+                          timerOn={timerOn}
+                          addToCheckScore={addToCheckScore}
+                      />
+                  )
+                })}
+              </div>
+          )
+        })}
+      </div>
+  )
 }
 export default ShootingBoard;
