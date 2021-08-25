@@ -14,11 +14,9 @@ const Timer = (props) => {
                 props.setRandomCol(Math.floor(Math.random() * props.size));
                 props.setTime((prevTime) => prevTime - tenMilliseconds);
             }, 1000);
-        } else if (!props.timerOn) {
+        }else if (!props.timerOn) {
             clearInterval(interval);
-        }
-
-        return () => clearInterval(interval);
+        } return () => clearInterval(interval);
     }, [props, props.timerOn]);
 
     return (

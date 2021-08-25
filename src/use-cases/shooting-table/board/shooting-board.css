@@ -1,12 +1,26 @@
 .rows {
     margin: 0 135px;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .columns {
+    border-radius: 50%;
     border: 1px solid black;
     width: 60px;
     height: 60px;
     padding: 0 0;
     display: inline-block;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.shooting-board {
+    background:black;
+    border-radius: 40px;
+    max-width: 900px;
+}
+h1{
+    color:red;
+}
+h2 {
+    color:red;
+    
 }

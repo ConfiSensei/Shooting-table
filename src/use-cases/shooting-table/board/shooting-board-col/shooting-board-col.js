@@ -1,12 +1,11 @@
-import React, {useState} from "react";
-
 const ShootingBoardCol = ({
   timerOn,
   row,
   col,
   randomRow,
   randomCol,
-  addToCheckScore
+  addToCheckScore,
+  timeBoard
 }) => {
 
   let backgroundColor = timerOn && row === randomRow && col === randomCol

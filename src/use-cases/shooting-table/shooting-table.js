@@ -3,6 +3,7 @@ import './shooting-table.css';
 import ShootingBoard from "./board/shooting-board";
 import Popup from "./popup/popup"
 import Timer from "./timer/timer";
+import timeBoard from "./timeBoard/timeBoard";
 
 function ShootingTable() {
 
@@ -15,9 +16,7 @@ function ShootingTable() {
   const [timerOn, setTimerOn] = useState(false);
   const [randomRow, setRandomRow] = useState(0);
   const [randomCol, setRandomCol] = useState(0);
-  const [checkScoreTable, setCheckScoreTable] = useState([])
-  const [startDate, setStartDate] = useState(0);
-  const [endDate, setEndDate] = useState(0);
+  const [checkScoreTable, setCheckScoreTable] = useState([]);
 
   const score = checkScoreTable.filter(value => value > 0).length;
 
@@ -30,16 +29,15 @@ function ShootingTable() {
   }
 
   const onButtonPlayClick = () => {
-    if (timerOn) {
+    if (timerOn || timerOn === 0) {
       setButtonName('PLAY');
       setTimerOn(false);
       setShowScore(true);
       setShowMissed(true);
-      setEndDate(Date.now());
-    } else {
+    }
+     else {
       setButtonName('STOP');
       setTimerOn(true);
-      setStartDate(Date.now())
     }
   }
 
@@ -48,12 +46,15 @@ function ShootingTable() {
         <div className="container">
           <h1>Welcome To The Game</h1>
           <h2>Score: {score}</h2>
+          <div>seconds: {}</div>
           <ShootingBoard timerOn={timerOn}
                          size={SIZE}
                          randomRow={randomRow}
                          randomCol={randomCol}
                          addToCheckScore={addToCheckScore}
           />
+          {/* <TimesBoard timeBoard={timeBoard}
+          /> */}
           <Timer time={time}
                  setTime={setTime}
                  timerOn={timerOn}
@@ -61,10 +62,10 @@ function ShootingTable() {
                  setRandomCol={setRandomCol}
                  size={SIZE}
           />
-          <button className="play-button"
+            <button className="play-button"
                   onClick={onButtonPlayClick}>
-            {buttonName}
-          </button>
+              {buttonName}
+            </button>
         </div>
         <Popup show={showScore}
                showMissed={showMissed}
@@ -73,8 +74,6 @@ function ShootingTable() {
                checkScoreTable={checkScoreTable}
                clearCheckScore={clearCheckScore}
                setTime={setTime}
-               startDate={startDate}
-               endDate={endDate}
         />
       </div>
   );
