@@ -3,7 +3,6 @@ import './shooting-table.css';
 import ShootingBoard from "./board/shooting-board";
 import Popup from "./popup/popup"
 import Timer from "./timer/timer";
-import timeBoard from "./timeBoard/timeBoard";
 
 function ShootingTable() {
 
@@ -29,13 +28,12 @@ function ShootingTable() {
   }
 
   const onButtonPlayClick = () => {
-    if (timerOn || timerOn === 0) {
+    if (timerOn) {
       setButtonName('PLAY');
       setTimerOn(false);
       setShowScore(true);
       setShowMissed(true);
-    }
-     else {
+    } else {
       setButtonName('STOP');
       setTimerOn(true);
     }
@@ -46,26 +44,25 @@ function ShootingTable() {
         <div className="container">
           <h1>Welcome To The Game</h1>
           <h2>Score: {score}</h2>
-          <div>seconds: {}</div>
           <ShootingBoard timerOn={timerOn}
                          size={SIZE}
                          randomRow={randomRow}
                          randomCol={randomCol}
                          addToCheckScore={addToCheckScore}
           />
-          {/* <TimesBoard timeBoard={timeBoard}
-          /> */}
           <Timer time={time}
                  setTime={setTime}
                  timerOn={timerOn}
+                 setTimerOn={setTimerOn}
+                 setButtonName={setButtonName}
                  setRandomRow={setRandomRow}
                  setRandomCol={setRandomCol}
                  size={SIZE}
           />
-            <button className="play-button"
+          <button className="play-button"
                   onClick={onButtonPlayClick}>
-              {buttonName}
-            </button>
+            {buttonName}
+          </button>
         </div>
         <Popup show={showScore}
                showMissed={showMissed}

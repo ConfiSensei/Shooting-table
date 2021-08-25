@@ -1,11 +1,13 @@
+import React from "react";
+
+
 const ShootingBoardCol = ({
   timerOn,
   row,
   col,
   randomRow,
   randomCol,
-  addToCheckScore,
-  timeBoard
+  addToCheckScore
 }) => {
 
   let backgroundColor = timerOn && row === randomRow && col === randomCol
@@ -20,9 +22,15 @@ const ShootingBoardCol = ({
            }}
            onClick={() => {
              if (backgroundColor === 'red') {
-               addToCheckScore(1);
+               addToCheckScore({
+                 score: 1,
+                 time: new Date().valueOf()
+               });
              } else {
-               addToCheckScore(0);
+               addToCheckScore({
+                 score: 0,
+                 time: new Date().valueOf()
+               });
              }
            }}
       >

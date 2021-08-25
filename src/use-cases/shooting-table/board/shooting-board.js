@@ -7,8 +7,7 @@ const ShootingBoard = ({
   size,
   randomRow,
   randomCol,
-  addToCheckScore,
-  addToShootTime
+  addToCheckScore
 }) => {
   const mockArray = Array.from(Array(size).keys());
 
@@ -27,7 +26,6 @@ const ShootingBoard = ({
                           col={col}
                           timerOn={timerOn}
                           addToCheckScore={addToCheckScore}
-                          addToShootTime={addToShootTime}
                       />
                   )
                 })}
